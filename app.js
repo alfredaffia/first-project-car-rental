@@ -79,6 +79,70 @@ function showSlides() {
 
 
 
+let cart = [];
+
+// Handle Add to Cart button clicks
+document.querySelectorAll('.addcart').forEach(button => {
+  button.addEventListener('click', function () {
+    const productElement = this.closest('.item');
+    const productId = productElement.getAttribute('data-product-id');
+    const productName = productElement.querySelector('h2').textContent;
+    const productPrice = parseFloat(productElement.querySelector('.price').textContent.replace('$', ''));
+
+    // Check if product is already in the cart
+    let productInCart = cart.find(item => item.id === productId);
+
+    if (productInCart) {
+      // Increase quantity if the product is already in the cart
+      productInCart.quantity++;
+    } else {
+      // Add new product to the cart
+      cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+    }
+
+    updateCart();
+  });
+});
+
+// Update the cart display
+function updateCart() {
+  const cartItemsContainer = document.getElementById('cart-items');
+  const totalPriceElement = document.getElementById('total-price');
+  const checkoutButton = document.getElementById('checkout');
+  let totalPrice = 0;
+  
+  // Clear previous cart items
+  cartItemsContainer.innerHTML = '';
+
+  cart.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.classList.add('cart-item');
+    itemElement.innerHTML = `
+      <p>${item.name} - $${item.price} x ${item.quantity}</p>
+      <button class="remove" data-product-id="${item.id}">Remove</button>
+    `;
+    cartItemsContainer.appendChild(itemElement);
+
+    totalPrice += item.price * item.quantity;
+  });
+
+  // Update total price
+  totalPriceElement.textContent = ($`{totalPrice}`);
+
+  // Enable/disable checkout button based on cart contents
+  checkoutButton.disabled = cart.length === 0;
+
+  // Attach event listeners for remove buttons
+  document.querySelectorAll('.remove').forEach(button => {
+    button.addEventListener('click', function () {
+      const productId = this.getAttribute('data-product-id');
+      cart = cart.filter(item => item.id !== productId);
+      updateCart();
+    });
+  });
+}
+
+
 
 
 
