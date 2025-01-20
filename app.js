@@ -18,59 +18,59 @@ body.addEventListener("click", (e) =>{
 })
 
 
-// window.addEventListener("scroll", () => {
-//   if (window.scrollY > 30) {
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 30) {
  
-//       navbar.style.borderRadius = "150px"
-//   } else {
-//     navbar.style.borderRadius = "0px"
+      navbar.style.borderRadius = "150px"
+  } else {
+    navbar.style.borderRadius = "0px"
 
-//   }
-// })
-// window.addEventListener("scroll", () => {
-//   if (window.scrollY > 0) {
-//     navbar.style.marginTop="10px"
-//   } else 
-// navbar.style.marginTop = "0px"
-// })
+  }
+})
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 0) {
+    navbar.style.marginTop="10px"
+  } else 
+navbar.style.marginTop = "0px"
+})
 
-// window.addEventListener("scroll", () => {
-// if(window.scroll >0){
-//   navbar.style.maxWidth="1300px"
-// }  
-// })
-// window.addEventListener("scroll", () => {
-//   if (window.scrollY > 30) {
-//   navbar.style.transition="2s"
-//   } else {
+window.addEventListener("scroll", () => {
+if(window.scroll >0){
+  navbar.style.maxWidth="1300px"
+}  
+})
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 30) {
+  navbar.style.transition="2s"
+  } else {
 
-// navbar.style.transition="2s"
-//   }
-// })
+navbar.style.transition="2s"
+  }
+})
 
 
-// // slide show
-// let slideIndex = 0;
-// showSlides();
+// slide show
+let slideIndex = 0;
+showSlides();
 
-// function showSlides() {
-//   let i;
-//   let slides = document.getElementsByClassName("mySlides");
-//   let dots = document.getElementsByClassName("dot");
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   slideIndex++;
-//   if (slideIndex > slides.length) {
-//     slideIndex = 1;
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//     dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex - 1].style.display = "block";
-//   dots[slideIndex - 1].className += " active";
-//   setTimeout(showSlides, 5000); // Change image every 2 seconds
-// }
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
 
 
 
